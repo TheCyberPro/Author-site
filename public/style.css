@@ -1,0 +1,9 @@
+body { font-family: Georgia, serif; background: #faf8f5; color: #222; margin: 0; }
+main { max-width: 680px; margin: 0 auto; padding: 2rem 1rem; }
+a { color: #8a4b2a; }
+input, textarea { width: 100%; padding: .6rem; margin: .4rem 0 .8rem; font: inherit; box-sizing: border-box; }
+button, .btn { background: #8a4b2a; color: #fff; border: 0; padding: .5rem 1rem; cursor: pointer; text-decoration: none; font: inherit; }
+button.link { background: none; color: #8a4b2a; padding: 0; text-decoration: underline; }
+.row { display: flex; justify-content: space-between; padding: .6rem 0; border-bottom: 1px solid #ddd; }
+.body { white-space: pre-wrap; line-height: 1.7; margin-top: 1rem; }
+.error { color: #b00020; }

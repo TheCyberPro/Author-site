@@ -1,0 +1,23 @@
+<link rel="stylesheet" href="/style.css">
+<main>
+  <h1>Dashboard</h1>
+  <p>
+    <a class="btn" href="/admin/new">+ New post</a>
+    <a href="/">View site</a>
+  </p>
+  <% posts.forEach(p => { %>
+    <div class="row">
+      <strong><%= p.title %></strong>
+      <span>
+        <a href="/post/<%= p.slug %>">View</a>
+        <a href="/admin/edit/<%= p.id %>">Edit</a>
+        <form method="post" action="/admin/delete/<%= p.id %>" style="display:inline"
+              onsubmit="return confirm('Delete this post?')">
+          <button class="link">Delete</button>
+        </form>
+      </span>
+    </div>
+  <% }) %>
+  <% if (posts.length === 0) { %><p>No posts yet.</p><% } %>
+  <form method="post" action="/admin/logout"><button class="link">Log out</button></form>
+</main>

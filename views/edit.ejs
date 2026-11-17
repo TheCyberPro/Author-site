@@ -1,0 +1,10 @@
+<link rel="stylesheet" href="/style.css">
+<main>
+  <h1><%= post.title ? 'Edit post' : 'New post' %></h1>
+  <form method="post" action="<%= action %>">
+    <input name="title" placeholder="Title" value="<%= post.title %>" required>
+    <textarea name="body" rows="16" placeholder="Write your post..." required><%= post.body %></textarea>
+    <button>Save</button>
+    <a href="/admin">Cancel</a>
+  </form>
+</main>

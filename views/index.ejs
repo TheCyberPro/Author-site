@@ -1,0 +1,10 @@
+<link rel="stylesheet" href="/style.css">
+<main>
+  <h1>My Author Site</h1>
+  <% posts.forEach(p => { %>
+    <h2><a href="/post/<%= p.slug %>"><%= p.title %></a></h2>
+    <small><%= p.created_at %></small>
+  <% }) %>
+  <% if (posts.length === 0) { %><p>No posts yet.</p><% } %>
+  <p><a href="/admin">Admin</a></p>
+</main>

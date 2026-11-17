@@ -1,0 +1,9 @@
+<link rel="stylesheet" href="/style.css">
+<main>
+  <h1>Admin login</h1>
+  <% if (error) { %><p class="error"><%= error %></p><% } %>
+  <form method="post" action="/admin/login">
+    <input type="password" name="password" placeholder="Password" autofocus>
+    <button>Log in</button>
+  </form>
+</main>
