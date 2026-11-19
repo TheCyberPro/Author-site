@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title><%= pageTitle ? pageTitle + ' · ' + siteName : siteName + ' — ' + settings.tagline %></title>
+<meta name="description" content="<%= pageDesc || settings.tagline %>">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232440d6'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='40' font-weight='700' fill='%23f4f4f0' text-anchor='middle'%3E%C2%B6%3C/text%3E%3C/svg%3E">
+<link rel="alternate" type="application/rss+xml" title="<%= siteName %>" href="/feed.xml">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/bricolage-grotesque@5/500.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/bricolage-grotesque@5/600.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/bricolage-grotesque@5/700.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/bricolage-grotesque@5/800.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/literata@5/400.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/literata@5/400-italic.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/literata@5/600.css">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body class="<%= bodyClass %>">
+<a class="skip-link" href="#main">Skip to content</a>
+<% if(bodyClass === 'reading'){ %><div class="progress" id="progress" aria-hidden="true"></div><% } %>
+<% const adminArea = currentPath.startsWith('/admin') && currentPath !== '/admin/login'; const authArea = currentPath === '/admin/login'; %>
+<header class="site-header<%= adminArea ? ' admin-header' : '' %>" id="siteHeader">
+  <div class="header-inner">
+    <a class="brand" href="<%= adminArea ? '/admin' : '/' %>">
+      <span class="brand-mark" aria-hidden="true">¶</span>
+      <span class="brand-name"><%= siteName %></span>
+      <% if(adminArea){ %><span class="brand-tag">the desk</span><% } %>
+    </a>
+    <% if(!authArea){ %>
+    <nav class="site-nav" id="siteNav" aria-label="Main">
+      <% if(adminArea){ %>
+        <a href="/admin" class="<%= (currentPath === '/admin' || currentPath.startsWith('/admin/posts')) ? 'active' : '' %>">Posts</a>
+        <a href="/admin/books" class="<%= currentPath.startsWith('/admin/books') ? 'active' : '' %>">Books</a>
+        <a href="/admin/settings" class="<%= currentPath.startsWith('/admin/settings') ? 'active' : '' %>">Settings</a>
+        <a href="/admin/subscribers" class="<%= currentPath.startsWith('/admin/subscribers') ? 'active' : '' %>">Subscribers</a>
+        <a href="/" class="nav-quiet" target="_blank" rel="noopener">View site ↗</a>
+        <form method="post" action="/admin/logout" class="nav-logout">
+          <input type="hidden" name="csrf" value="<%= csrf %>">
+          <button type="submit" class="btn ghost sm">Sign out</button>
+        </form>
+      <% } else { %>
+        <a href="/" class="<%= (currentPath === '/' || currentPath.startsWith('/posts')) ? 'active' : '' %>">Writing</a>
+        <a href="/about" class="<%= currentPath === '/about' ? 'active' : '' %>">About</a>
+        <a href="/about#books">Books</a>
+        <a href="/#letter">Newsletter</a>
+        <% if(latestSlug){ %><a class="btn primary sm nav-cta" href="/posts/<%= latestSlug %>">Latest essay</a><% } %>
+      <% } %>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Menu"><span></span><span></span><span></span></button>
+    <% } %>
+  </div>
+</header>
+<main id="main" class="<%= adminArea ? 'admin-main' : 'public-main' %>">

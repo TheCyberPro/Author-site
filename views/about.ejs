@@ -1,0 +1,52 @@
+<% pageTitle = 'About & books'; pageDesc = 'About ' + settings.authorName + ' — bio and books.'; bodyClass = 'public'; %>
+<%- include('partials/head') %>
+<div class="container">
+  <section class="about-hero">
+    <figure class="portrait-frame reveal in">
+      <img src="/covers/portrait.svg" alt="Illustrated portrait of <%= settings.authorName %>">
+      <figcaption><%= settings.authorName %>, somewhere near the water.</figcaption>
+    </figure>
+    <div class="about-copy reveal in">
+      <p class="kicker">About the author</p>
+      <h1 class="page-title"><%= settings.authorName %><span class="tick">.</span></h1>
+      <div class="prose"><%- renderMd(settings.bio) %></div>
+      <ul class="facts">
+        <% if(settings.location){ %><li><span class="fact-k">Based in</span><span><%= settings.location %></span></li><% } %>
+        <% if(settings.email){ %><li><span class="fact-k">Contact</span><a href="mailto:<%= settings.email %>"><%= settings.email %></a></li><% } %>
+        <% if(settings.website){ %><li><span class="fact-k">Elsewhere</span><a href="<%= settings.website %>" target="_blank" rel="noopener noreferrer"><%= settings.website.replace(/^https?:\/\//, '') %> ↗</a></li><% } %>
+      </ul>
+    </div>
+  </section>
+  <section class="books-section" id="books">
+    <div class="section-head reveal">
+      <p class="kicker">The novels</p>
+      <h2 class="section-title">Books<span class="tick">.</span></h2>
+      <p class="section-sub"><%= books.length %> novel<%= books.length === 1 ? '' : 's' %>, in order of appearance. Each one began as a mistake on a chart.</p>
+    </div>
+    <% if(books.length){ %>
+    <div class="book-grid">
+      <% books.forEach((b, i) => { %>
+      <article class="book-card reveal" style="--i:<%= i %>">
+        <div class="book-stage">
+          <% if(b.cover){ %>
+          <img class="book-cover" data-cover-fallback data-title="<%= b.title %>" src="<%= b.cover %>" alt="Cover of <%= b.title %>" loading="lazy">
+          <% } else { %>
+          <div class="book-cover cover-fallback"><span><%= b.title %></span><em><%= settings.authorName %></em></div>
+          <% } %>
+        </div>
+        <div class="book-info">
+          <p class="book-year"><%= b.year || 'Forthcoming' %></p>
+          <h3 class="book-title"><%= b.title %></h3>
+          <% if(b.subtitle){ %><p class="book-sub"><%= b.subtitle %></p><% } %>
+          <% if(b.blurb){ %><p class="book-blurb"><%= b.blurb %></p><% } %>
+          <% if(b.buy_url){ %><a class="btn primary sm" href="<%= b.buy_url %>" target="_blank" rel="noopener noreferrer">Buy the book ↗</a><% } %>
+        </div>
+      </article>
+      <% }); %>
+    </div>
+    <% } else { %>
+    <div class="empty"><p class="empty-mark">¶</p><h2>Books are on the way</h2><p>Watch this shelf.</p></div>
+    <% } %>
+  </section>
+</div>
+<%- include('partials/foot') %>

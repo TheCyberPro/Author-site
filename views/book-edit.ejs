@@ -1,0 +1,42 @@
+<% const b = locals.book || { id: null, title: '', subtitle: '', year: '', cover: '', buy_url: '', blurb: '' };
+pageTitle = b.id ? 'Edit book' : 'New book'; bodyClass = 'admin';
+const formAction = b.id ? '/admin/books/' + b.id : '/admin/books'; %>
+<%- include('partials/head') %>
+<div class="container">
+  <div class="page-head">
+    <div>
+      <p class="kicker"><a href="/admin/books">← Books</a></p>
+      <h1 class="page-title"><%= b.id ? 'Edit book' : 'New book' %><span class="tick">.</span></h1>
+    </div>
+  </div>
+  <% if(locals.formError){ %><p class="form-error" role="alert"><%= formError %></p><% } %>
+  <form method="post" action="<%= formAction %>" class="edit-grid">
+    <input type="hidden" name="csrf" value="<%= csrf %>">
+    <div class="edit-main">
+      <div class="field"><label for="f-btitle">Title</label><input id="f-btitle" type="text" name="title" value="<%= b.title %>" maxlength="160" required placeholder="The Cartographer's Daughter"></div>
+      <div class="field-row">
+        <div class="field"><label for="f-bsub">Subtitle</label><input id="f-bsub" type="text" name="subtitle" value="<%= b.subtitle %>" maxlength="120" placeholder="A novel"></div>
+        <div class="field small"><label for="f-byear">Year</label><input id="f-byear" type="number" name="year" value="<%= b.year %>" min="1400" max="2100" placeholder="2026"></div>
+      </div>
+      <div class="field">
+        <label for="f-cover">Cover image</label>
+        <input id="f-cover" type="text" name="cover" value="<%= b.cover %>" maxlength="300" placeholder="/covers/my-book.svg">
+        <p class="field-note">Drop an SVG, PNG or JPG into <code>public/covers/</code> and reference it here, or paste a full image URL. Leave blank for a typeset cover.</p>
+      </div>
+      <div class="field"><label for="f-buy">Buy link</label><input id="f-buy" type="url" name="buy_url" value="<%= b.buy_url %>" maxlength="300" placeholder="https://bookshop.org/…"></div>
+      <div class="field"><label for="f-blurb">Blurb</label><textarea id="f-blurb" name="blurb" rows="4" maxlength="600" placeholder="Two or three sentences — the back-cover voice."><%= b.blurb %></textarea></div>
+      <div class="form-actions">
+        <button class="btn primary" type="submit"><%= b.id ? 'Save book' : 'Add to shelf' %></button>
+        <a class="btn ghost" href="/admin/books">Cancel</a>
+      </div>
+    </div>
+    <aside class="edit-side">
+      <div class="side-card cover-card">
+        <h3>Cover preview</h3>
+        <img id="coverPreview" src="<%= b.cover || '/covers/cartographers-daughter.svg' %>" alt="Cover preview" <%= b.cover ? '' : 'hidden' %>>
+        <p class="side-hint">Shown at 2:3, like the public shelf.</p>
+      </div>
+    </aside>
+  </form>
+</div>
+<%- include('partials/foot') %>

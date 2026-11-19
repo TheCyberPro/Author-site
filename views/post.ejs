@@ -1,7 +1,40 @@
-<link rel="stylesheet" href="/style.css">
-<main>
-  <h1><%= post.title %></h1>
-  <small><%= post.created_at %></small>
-  <div class="body"><%= post.body %></div>
-  <p><a href="/">&larr; Back</a></p>
-</main>
+<% pageTitle = post.title; pageDesc = post.excerpt || settings.tagline; bodyClass = 'reading'; %>
+<%- include('partials/head') %>
+<div class="container narrow">
+  <article class="article">
+    <a class="back-link" href="/">← All writing</a>
+    <% if(post.status !== 'published'){ %>
+    <p class="preview-banner">Preview — this post is <%= post.status === 'trashed' ? 'in the trash' : 'a draft' %> and not visible to readers.</p>
+    <% } %>
+    <header class="article-head reveal in">
+      <p class="kicker"><time datetime="<%= (post.published_at || post.created_at).slice(0, 10) %>"><%= fmtDate(post.published_at || post.created_at) %></time> · <%= readMin(post.body) %> min read</p>
+      <h1 class="article-title"><%= post.title %></h1>
+      <% if(post.excerpt){ %><p class="article-lede"><%= post.excerpt %></p><% } %>
+    </header>
+    <div class="prose reveal in"><%- html %></div>
+    <div class="article-end">
+      <span class="asterism" aria-hidden="true">⁂</span>
+      <button class="btn ghost sm" type="button" data-copy-link>Copy link</button>
+    </div>
+    <aside class="author-card reveal">
+      <img src="/covers/portrait.svg" alt="Portrait of <%= settings.authorName %>" width="72" height="86">
+      <div>
+        <p class="ac-name"><%= settings.authorName %></p>
+        <p class="ac-bio"><%= settings.tagline %></p>
+        <a href="/about">About &amp; books →</a>
+      </div>
+    </aside>
+    <nav class="post-nav" aria-label="More essays">
+      <% if(newer){ %><a class="pn" href="/posts/<%= newer.slug %>"><span class="pn-label">← Newer</span><span class="pn-title"><%= newer.title %></span></a><% } else { %><span class="pn ghosted"></span><% } %>
+      <% if(older){ %><a class="pn next" href="/posts/<%= older.slug %>"><span class="pn-label">Older →</span><span class="pn-title"><%= older.title %></span></a><% } else { %><span class="pn ghosted"></span><% } %>
+    </nav>
+    <div class="cta-card reveal">
+      <div>
+        <h2>Enjoyed this?</h2>
+        <p>The Margin lands once a month — new essays, book news, and what I'm reading.</p>
+      </div>
+      <a class="btn primary" href="#letter">Get the letter</a>
+    </div>
+  </article>
+</div>
+<%- include('partials/foot') %>

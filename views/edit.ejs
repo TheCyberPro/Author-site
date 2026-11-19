@@ -1,10 +1,66 @@
-<link rel="stylesheet" href="/style.css">
-<main>
-  <h1><%= post.title ? 'Edit post' : 'New post' %></h1>
-  <form method="post" action="<%= action %>">
-    <input name="title" placeholder="Title" value="<%= post.title %>" required>
-    <textarea name="body" rows="16" placeholder="Write your post..." required><%= post.body %></textarea>
-    <button>Save</button>
-    <a href="/admin">Cancel</a>
+<% const p = locals.post || { id: null, title: '', slug: '', excerpt: '', body: '', status: 'draft', created_at: null, updated_at: null, published_at: null };
+pageTitle = p.id ? 'Edit post' : 'New post'; bodyClass = 'admin'; useEditor = true;
+const formAction = p.id ? '/admin/posts/' + p.id : '/admin/posts'; %>
+<%- include('partials/head') %>
+<div class="container wide">
+  <div class="page-head">
+    <div>
+      <p class="kicker"><a href="/admin">← Posts</a></p>
+      <h1 class="page-title"><%= p.id ? 'Edit post' : 'New post' %><span class="tick">.</span></h1>
+    </div>
+    <% if(p.id){ %><a class="btn ghost" href="/posts/<%= p.slug %>" target="_blank" rel="noopener"><%= p.status === 'published' ? 'View live ↗' : 'Preview ↗' %></a><% } %>
+  </div>
+  <% if(locals.formError){ %><p class="form-error" role="alert"><%= formError %></p><% } %>
+  <form id="postForm" method="post" action="<%= formAction %>" class="edit-grid">
+    <input type="hidden" name="csrf" value="<%= csrf %>">
+    <div class="edit-main">
+      <label class="sr-only" for="f-title">Title</label>
+      <input id="f-title" class="title-input" type="text" name="title" value="<%= p.title %>" placeholder="Post title" maxlength="200" required>
+      <div class="slug-row">
+        <span class="slug-prefix">/posts/</span>
+        <input id="f-slug" type="text" name="slug" value="<%= p.slug %>" placeholder="auto-from-title" maxlength="90" aria-label="Slug">
+      </div>
+      <div class="field">
+        <div class="field-label"><label for="f-excerpt">Excerpt</label><span class="field-note" id="excerptCount">0 / 300</span></div>
+        <textarea id="f-excerpt" name="excerpt" rows="2" maxlength="300" placeholder="One or two sentences shown on the homepage. Leave blank to auto-generate."><%= p.excerpt %></textarea>
+      </div>
+      <%- include('partials/editor', { name: 'body', label: 'Body', value: p.body, editorKey: 'post-' + (p.id || 'new'), placeholder: 'Write in Markdown — the preview keeps you honest.' }) %>
+    </div>
+    <aside class="edit-side">
+      <div class="side-card">
+        <h3>Publish</h3>
+        <p class="side-status">Status: <span class="pill pill-<%= p.status %>"><%= p.status %></span></p>
+        <% if(p.published_at){ %><p class="side-meta">First published <%= fmtDate(p.published_at) %></p><% } %>
+        <div class="side-actions">
+          <% if(p.status === 'published'){ %>
+          <button class="btn primary block" type="submit" name="status" value="published" data-primary-save>Save changes</button>
+          <button class="btn ghost block" type="submit" name="status" value="draft">Switch to draft</button>
+          <% } else { %>
+          <button class="btn primary block" type="submit" name="status" value="published" data-primary-save>Publish</button>
+          <button class="btn ghost block" type="submit" name="status" value="draft">Save draft</button>
+          <% } %>
+        </div>
+        <p class="side-hint"><kbd>Ctrl</kbd>+<kbd>S</kbd> saves · <kbd>Ctrl</kbd>+<kbd>B</kbd>/<kbd>I</kbd> formats</p>
+      </div>
+      <% if(p.id){ %>
+      <div class="side-card">
+        <h3>Details</h3>
+        <p class="side-meta">Created <%= fmtDate(p.created_at) %></p>
+        <p class="side-meta">Updated <%= fmtDate(p.updated_at) %></p>
+        <p class="side-meta"><%= wordCount(p.body) %> words · <%= readMin(p.body) %> min read</p>
+      </div>
+      <div class="side-card danger-zone">
+        <h3>Danger zone</h3>
+        <button class="btn danger block" type="submit" form="trashForm">Move to trash</button>
+      </div>
+      <% } %>
+    </aside>
   </form>
-</main>
+  <% if(p.id){ %>
+  <form id="trashForm" method="post" action="/admin/posts/<%= p.id %>/trash" data-confirm="Move “<%= p.title %>” to the trash?" data-confirm-label="Move to trash">
+    <input type="hidden" name="csrf" value="<%= csrf %>">
+    <input type="hidden" name="back" value="/admin">
+  </form>
+  <% } %>
+</div>
+<%- include('partials/foot') %>

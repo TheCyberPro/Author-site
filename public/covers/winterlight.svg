@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 900" role="img" aria-label="Book cover: Winterlight by Mara Voss">
+  <defs>
+    <linearGradient id="wl-bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#14382c"/>
+      <stop offset="1" stop-color="#081b14"/>
+    </linearGradient>
+    <radialGradient id="wl-sun" cx="0.5" cy="0.42" r="0.65">
+      <stop offset="0" stop-color="#f2f7f0"/>
+      <stop offset="1" stop-color="#cfe4d4"/>
+    </radialGradient>
+  </defs>
+  <rect width="600" height="900" fill="url(#wl-bg)"/>
+  <circle cx="300" cy="280" r="170" fill="none" stroke="#cfe4d4" stroke-width="1.4" opacity="0.25"/>
+  <circle cx="300" cy="280" r="140" fill="url(#wl-sun)" opacity="0.95"/>
+  <g fill="#f2f7f0" opacity="0.5">
+    <circle cx="90" cy="120" r="2"/><circle cx="150" cy="420" r="1.6"/><circle cx="480" cy="100" r="2"/>
+    <circle cx="520" cy="380" r="1.6"/><circle cx="70" cy="520" r="1.8"/><circle cx="430" cy="470" r="1.4"/>
+    <circle cx="240" cy="80" r="1.6"/><circle cx="360" cy="60" r="1.4"/><circle cx="540" cy="240" r="1.6"/>
+  </g>
+  <rect x="0" y="470" width="600" height="2" fill="#cfe4d4" opacity="0.35"/>
+  <g fill="#06140f">
+    <path d="M20,790 L64,690 L108,790 Z"/><path d="M96,790 L150,660 L204,790 Z"/>
+    <path d="M190,790 L232,706 L274,790 Z"/><path d="M320,790 L372,672 L424,790 Z"/>
+    <path d="M414,790 L458,700 L502,790 Z"/><path d="M492,790 L544,664 L596,790 Z"/>
+    <rect x="0" y="788" width="600" height="112"/>
+  </g>
+  <text x="300" y="580" text-anchor="middle" font-family="Trebuchet MS, Verdana, sans-serif" font-weight="bold" font-size="52" letter-spacing="4" fill="#f2f7f0">WINTERLIGHT</text>
+  <text x="300" y="618" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="22" fill="#9fc4ab">a novel</text>
+  <rect x="270" y="642" width="60" height="3" fill="#cfe4d4"/>
+  <text x="300" y="838" text-anchor="middle" font-family="Trebuchet MS, Verdana, sans-serif" font-size="26" letter-spacing="8" fill="#cfe4d4">MARA VOSS</text>
+  <text x="300" y="868" text-anchor="middle" font-family="Trebuchet MS, Verdana, sans-serif" font-size="12" letter-spacing="4" fill="#9fc4ab" opacity="0.85">MERIDIAN PRESS</text>
+  <rect width="24" height="900" fill="#05100c" opacity="0.9"/>
+  <rect x="26" width="2" height="900" fill="#ffffff" opacity="0.1"/>
+</svg>

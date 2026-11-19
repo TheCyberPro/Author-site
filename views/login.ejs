@@ -1,9 +1,23 @@
-<link rel="stylesheet" href="/style.css">
-<main>
-  <h1>Admin login</h1>
-  <% if (error) { %><p class="error"><%= error %></p><% } %>
-  <form method="post" action="/admin/login">
-    <input type="password" name="password" placeholder="Password" autofocus>
-    <button>Log in</button>
-  </form>
-</main>
+<% pageTitle = 'Sign in'; bodyClass = 'auth'; %>
+<%- include('partials/head') %>
+<div class="auth-wrap">
+  <div class="auth-card<%= locals.error ? ' error' : '' %>">
+    <span class="auth-mark" aria-hidden="true">¶</span>
+    <h1>The desk is locked<span class="tick">.</span></h1>
+    <p class="auth-sub">Sign in to write, edit, and manage the site.</p>
+    <% if(locals.error){ %><p class="auth-error" role="alert"><%= error %></p><% } %>
+    <% if(locals.loggedOut){ %><p class="auth-note">Signed out. The kettle is still warm.</p><% } %>
+    <form method="post" action="/admin/login">
+      <input type="hidden" name="csrf" value="<%= csrf %>">
+      <label for="adminPassword">Password</label>
+      <div class="pw-row">
+        <input id="adminPassword" type="password" name="password" required autofocus autocomplete="current-password" placeholder="••••••••••">
+        <button type="button" class="pw-toggle" data-toggle-password="#adminPassword" aria-pressed="false" aria-label="Show password">Show</button>
+      </div>
+      <button class="btn primary block" type="submit">Unlock the desk</button>
+    </form>
+    <p class="auth-hint">The password lives in the <code>ADMIN_PASSWORD</code> environment variable — never in the repo.</p>
+    <a class="back-link" href="/">← Back to the site</a>
+  </div>
+</div>
+<%- include('partials/foot') %>

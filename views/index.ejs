@@ -1,10 +1,59 @@
-<link rel="stylesheet" href="/style.css">
-<main>
-  <h1>My Author Site</h1>
-  <% posts.forEach(p => { %>
-    <h2><a href="/post/<%= p.slug %>"><%= p.title %></a></h2>
-    <small><%= p.created_at %></small>
-  <% }) %>
-  <% if (posts.length === 0) { %><p>No posts yet.</p><% } %>
-  <p><a href="/admin">Admin</a></p>
-</main>
+<% pageTitle = ''; pageDesc = settings.tagline; bodyClass = 'public'; %>
+<%- include('partials/head') %>
+<div class="container">
+  <section class="masthead">
+    <p class="kicker">The journal of <%= settings.authorName %></p>
+    <h1 class="mast-title"><%= siteName %><span class="tick">.</span></h1>
+    <p class="mast-lede"><%= settings.tagline %></p>
+    <div class="mast-meta">
+      <span><%= totalPublished %> essays</span><span class="sep">·</span>
+      <span><%= bookCount %> books</span><span class="sep">·</span>
+      <a href="#letter">The Margin, monthly</a>
+    </div>
+  </section>
+  <section class="journal" aria-label="Journal">
+    <form class="search-row" method="get" action="/">
+      <label class="sr-only" for="q">Search the journal</label>
+      <input id="q" type="search" name="q" value="<%= q %>" placeholder="Search the journal…" autocomplete="off">
+      <button class="btn ghost sm" type="submit">Search</button>
+      <% if(q){ %><a class="search-clear" href="/">Clear ×</a><% } %>
+    </form>
+    <% if(q){ %><p class="result-note"><%= total %> result<%= total === 1 ? '' : 's' %> for “<%= q %>”</p><% } %>
+    <% if(posts.length){ %>
+    <ol class="post-list">
+      <% posts.forEach((p, i) => { const dp = dateParts(p.published_at || p.created_at); %>
+      <li class="post-row reveal" style="--i:<%= i %>">
+        <time class="post-date" datetime="<%= (p.published_at || p.created_at).slice(0, 10) %>">
+          <span class="pd-day"><%= dp.day %></span>
+          <span class="pd-my"><%= dp.mon %> <%= dp.year %></span>
+        </time>
+        <div class="post-main">
+          <h2 class="post-title"><a href="/posts/<%= p.slug %>"><%= p.title %></a></h2>
+          <% if(p.excerpt){ %><p class="post-excerpt"><%= p.excerpt %></p><% } %>
+          <p class="post-meta"><span><%= readMin(p.body) %> min read</span><span class="sep">·</span><a class="read-link" href="/posts/<%= p.slug %>">Read the essay →</a></p>
+        </div>
+      </li>
+      <% }); %>
+    </ol>
+    <% if(pages > 1){ %>
+    <nav class="pager" aria-label="Pages">
+      <% if(page > 1){ %><a class="btn ghost sm" href="<%= pageBase %>page=<%= page - 1 %>">← Newer</a><% } else { %><span></span><% } %>
+      <span class="pager-info">Page <%= page %> of <%= pages %></span>
+      <% if(page < pages){ %><a class="btn ghost sm" href="<%= pageBase %>page=<%= page + 1 %>">Older →</a><% } else { %><span></span><% } %>
+    </nav>
+    <% } %>
+    <% } else { %>
+    <div class="empty">
+      <p class="empty-mark">¶</p>
+      <% if(q){ %>
+      <h2>Nothing found for “<%= q %>”</h2>
+      <p>Try a different word, or <a href="/">browse everything</a>.</p>
+      <% } else { %>
+      <h2>The journal is warming up</h2>
+      <p>The first essay is being written. Subscribe below and it will find you.</p>
+      <% } %>
+    </div>
+    <% } %>
+  </section>
+</div>
+<%- include('partials/foot') %>

@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 900" role="img" aria-label="Book cover: Salt and Signal by Mara Voss">
+  <defs>
+    <linearGradient id="ss-bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#171c2b"/>
+      <stop offset="1" stop-color="#0b0e17"/>
+    </linearGradient>
+    <linearGradient id="ss-beam" x1="1" y1="0" x2="0" y2="0">
+      <stop offset="0" stop-color="#f6bd4a" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#f6bd4a" stop-opacity="0"/>
+    </linearGradient>
+    <clipPath id="ss-tower"><path d="M455,430 L466,166 L494,166 L505,430 Z"/></clipPath>
+  </defs>
+  <rect width="600" height="900" fill="url(#ss-bg)"/>
+  <g fill="#f4f4f0" opacity="0.55">
+    <circle cx="90" cy="90" r="1.6"/><circle cx="180" cy="60" r="1.2"/><circle cx="260" cy="120" r="1.4"/>
+    <circle cx="340" cy="70" r="1.2"/><circle cx="120" cy="180" r="1.2"/><circle cx="300" cy="200" r="1.5"/>
+    <circle cx="60" cy="300" r="1.2"/><circle cx="210" cy="330" r="1.2"/>
+  </g>
+  <polygon points="480,150 0,330 0,480" fill="url(#ss-beam)" opacity="0.8"/>
+  <polygon points="480,150 0,260 0,560" fill="url(#ss-beam)" opacity="0.22"/>
+  <g>
+    <path d="M455,430 L466,166 L494,166 L505,430 Z" fill="#232a3d"/>
+    <g clip-path="url(#ss-tower)" fill="#c83540">
+      <rect x="450" y="220" width="60" height="30"/>
+      <rect x="450" y="300" width="60" height="30"/>
+      <rect x="450" y="380" width="60" height="30"/>
+    </g>
+    <rect x="462" y="132" width="36" height="34" rx="4" fill="#f6bd4a"/>
+    <path d="M456,132 L480,110 L504,132 Z" fill="#232a3d"/>
+    <rect x="448" y="430" width="64" height="12" fill="#232a3d"/>
+  </g>
+  <g fill="none" stroke-linecap="round">
+    <path d="M-10,660 C60,640 130,680 200,660 C270,640 340,680 410,660 C480,640 550,680 620,660" stroke="#c83540" stroke-width="3" opacity="0.85"/>
+    <path d="M-10,706 C60,686 130,726 200,706 C270,686 340,726 410,706 C480,686 550,726 620,706" stroke="#f6bd4a" stroke-width="2.4" opacity="0.6"/>
+    <path d="M-10,752 C60,732 130,772 200,752 C270,732 340,772 410,752 C480,732 550,772 620,752" stroke="#3a4258" stroke-width="3" opacity="0.9"/>
+  </g>
+  <text x="58" y="560" font-family="Trebuchet MS, Verdana, sans-serif" font-weight="bold" font-size="64" fill="#f4f4f0">SALT &amp;</text>
+  <text x="58" y="628" font-family="Trebuchet MS, Verdana, sans-serif" font-weight="bold" font-size="64" fill="#f6bd4a">SIGNAL</text>
+  <rect x="60" y="656" width="120" height="4" fill="#c83540"/>
+  <text x="60" y="700" font-family="Georgia, serif" font-style="italic" font-size="22" fill="#9aa3bd">a novel</text>
+  <text x="60" y="830" font-family="Trebuchet MS, Verdana, sans-serif" font-size="28" letter-spacing="8" fill="#f4f4f0">MARA VOSS</text>
+  <text x="60" y="862" font-family="Trebuchet MS, Verdana, sans-serif" font-size="12" letter-spacing="4" fill="#9aa3bd" opacity="0.85">MERIDIAN PRESS</text>
+  <rect width="24" height="900" fill="#05070d" opacity="0.9"/>
+  <rect x="26" width="2" height="900" fill="#ffffff" opacity="0.1"/>
+</svg>

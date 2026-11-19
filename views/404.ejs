@@ -1,0 +1,15 @@
+<% pageTitle = String(statusCode); bodyClass = 'public'; %>
+<%- include('partials/head') %>
+<div class="container narrow">
+  <div class="empty big">
+    <p class="empty-mark">¶</p>
+    <h1 class="nf-code"><%= statusCode %></h1>
+    <h2><%= statusCode === 404 ? 'This page is still a draft.' : (statusCode === 403 ? 'The session went stale.' : 'Something broke at the desk.') %></h2>
+    <p><%= message || (statusCode === 404 ? 'The link may be old, or the page never existed. The writing, however, is very real.' : 'Try again in a moment.') %></p>
+    <div class="nf-actions">
+      <a class="btn primary" href="/">Back to the journal</a>
+      <a class="btn ghost" href="/about">About the author</a>
+    </div>
+  </div>
+</div>
+<%- include('partials/foot') %>

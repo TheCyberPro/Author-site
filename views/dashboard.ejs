@@ -1,23 +1,126 @@
-<link rel="stylesheet" href="/style.css">
-<main>
-  <h1>Dashboard</h1>
-  <p>
-    <a class="btn" href="/admin/new">+ New post</a>
-    <a href="/">View site</a>
-  </p>
-  <% posts.forEach(p => { %>
-    <div class="row">
-      <strong><%= p.title %></strong>
-      <span>
-        <a href="/post/<%= p.slug %>">View</a>
-        <a href="/admin/edit/<%= p.id %>">Edit</a>
-        <form method="post" action="/admin/delete/<%= p.id %>" style="display:inline"
-              onsubmit="return confirm('Delete this post?')">
-          <button class="link">Delete</button>
-        </form>
-      </span>
+<% pageTitle = 'Posts'; bodyClass = 'admin'; %>
+<%- include('partials/head') %>
+<div class="container wide">
+  <div class="page-head">
+    <div>
+      <p class="kicker">The desk</p>
+      <h1 class="page-title">Posts<span class="tick">.</span></h1>
     </div>
-  <% }) %>
-  <% if (posts.length === 0) { %><p>No posts yet.</p><% } %>
-  <form method="post" action="/admin/logout"><button class="link">Log out</button></form>
-</main>
+    <a class="btn primary" href="/admin/posts/new">+ New post</a>
+  </div>
+  <div class="stats">
+    <div class="stat"><span class="stat-n"><%= counts.published %></span><span class="stat-l">Published</span></div>
+    <div class="stat"><span class="stat-n"><%= counts.draft %></span><span class="stat-l">Drafts</span></div>
+    <div class="stat"><span class="stat-n"><%= counts.trashed %></span><span class="stat-l">In trash</span></div>
+    <div class="stat"><span class="stat-n"><%= subscriberCount %></span><span class="stat-l">Subscribers</span></div>
+  </div>
+  <% const tabHref = s => { const u = new URLSearchParams(); if(q) u.set('q', q); if(sort !== 'updated_desc') u.set('sort', sort); if(s !== 'all') u.set('status', s); const str = u.toString(); return '/admin' + (str ? '?' + str : ''); }; %>
+  <div class="view-tabs">
+    <a class="view-tab <%= statusFilter === 'all' ? 'active' : '' %>" href="<%= tabHref('all') %>">All</a>
+    <a class="view-tab <%= statusFilter === 'published' ? 'active' : '' %>" href="<%= tabHref('published') %>">Published · <%= counts.published %></a>
+    <a class="view-tab <%= statusFilter === 'draft' ? 'active' : '' %>" href="<%= tabHref('draft') %>">Drafts · <%= counts.draft %></a>
+    <a class="view-tab <%= statusFilter === 'trashed' ? 'active' : '' %>" href="<%= tabHref('trashed') %>">Trash · <%= counts.trashed %></a>
+  </div>
+  <form class="toolbar" method="get" action="/admin">
+    <input type="hidden" name="status" value="<%= statusFilter %>">
+    <label class="sr-only" for="dq">Search posts</label>
+    <input id="dq" type="search" name="q" value="<%= q %>" placeholder="Search titles & text…">
+    <label class="sr-only" for="dsort">Sort</label>
+    <select id="dsort" name="sort" data-autosubmit>
+      <option value="updated_desc" <%= sort === 'updated_desc' ? 'selected' : '' %>>Recently updated</option>
+      <option value="created_desc" <%= sort === 'created_desc' ? 'selected' : '' %>>Newest first</option>
+      <option value="oldest" <%= sort === 'oldest' ? 'selected' : '' %>>Oldest first</option>
+      <option value="title" <%= sort === 'title' ? 'selected' : '' %>>Title A–Z</option>
+    </select>
+    <button class="btn ghost sm" type="submit">Search</button>
+  </form>
+  <% if(statusFilter === 'trashed' && counts.trashed > 0){ %>
+  <form id="emptyTrashForm" method="post" action="/admin/posts/empty-trash" data-confirm="Permanently delete every post in the trash? This cannot be undone." data-confirm-label="Empty trash" style="margin-bottom:14px">
+    <input type="hidden" name="csrf" value="<%= csrf %>">
+    <button class="btn danger sm" type="submit">Empty trash</button>
+  </form>
+  <% } %>
+  <% if(posts.length){ %>
+  <form id="bulkForm" method="post" action="/admin/posts/bulk" class="bulk-form">
+    <input type="hidden" name="csrf" value="<%= csrf %>">
+    <input type="hidden" name="back" value="<%= currentUrl %>">
+    <input type="hidden" name="action" id="bulkAction" value="">
+    <div class="bulk-bar" id="bulkBar">
+      <span id="bulkCount">0 selected</span>
+      <% if(statusFilter !== 'trashed'){ %>
+      <button type="button" class="btn sm light" data-bulk="publish">Publish</button>
+      <button type="button" class="btn sm light" data-bulk="draft">Draft</button>
+      <button type="button" class="btn sm danger" data-bulk="trash" data-confirm="Move the selected posts to the trash?" data-confirm-label="Move to trash">Trash</button>
+      <% } else { %>
+      <button type="button" class="btn sm light" data-bulk="restore">Restore</button>
+      <button type="button" class="btn sm danger" data-bulk="destroy" data-confirm="Permanently delete the selected posts? This cannot be undone." data-confirm-label="Delete forever">Delete forever</button>
+      <% } %>
+      <button type="button" class="bulk-clear" id="bulkClear">Clear</button>
+    </div>
+  </form>
+  <div class="plist">
+    <div class="plist-head">
+      <input type="checkbox" id="checkAll" aria-label="Select all">
+      <span>Title</span><span>Status</span><span>Updated</span><span class="ph-words">Words</span><span class="ph-actions">Actions</span>
+    </div>
+    <% posts.forEach(p => { %>
+    <div class="prow">
+      <input class="row-check" type="checkbox" form="bulkForm" name="ids" value="<%= p.id %>" aria-label="Select <%= p.title %>">
+      <div class="prow-title">
+        <a href="/admin/posts/<%= p.id %>/edit"><%= p.title %></a>
+        <span class="prow-slug">/posts/<%= p.slug %></span>
+      </div>
+      <span class="pill pill-<%= p.status %>"><%= p.status %></span>
+      <span class="prow-date"><%= fmtDate(p.updated_at) %></span>
+      <span class="prow-words"><%= wordCount(p.body) %></span>
+      <div class="prow-actions">
+        <a class="btn ghost sm" href="/admin/posts/<%= p.id %>/edit">Edit</a>
+        <% if(p.status === 'published'){ %><a class="btn ghost sm" href="/posts/<%= p.slug %>" target="_blank" rel="noopener">View</a><% } %>
+        <% if(p.status !== 'trashed'){ %>
+        <form method="post" action="/admin/posts/<%= p.id %>/trash" data-confirm="Move “<%= p.title %>” to the trash?" data-confirm-label="Move to trash">
+          <input type="hidden" name="csrf" value="<%= csrf %>">
+          <input type="hidden" name="back" value="<%= currentUrl %>">
+          <button class="btn ghost sm danger-text" type="submit">Trash</button>
+        </form>
+        <% } else { %>
+        <form method="post" action="/admin/posts/<%= p.id %>/restore">
+          <input type="hidden" name="csrf" value="<%= csrf %>">
+          <input type="hidden" name="back" value="<%= currentUrl %>">
+          <button class="btn ghost sm" type="submit">Restore</button>
+        </form>
+        <form method="post" action="/admin/posts/<%= p.id %>/destroy" data-confirm="Permanently delete “<%= p.title %>”? This cannot be undone." data-confirm-label="Delete forever">
+          <input type="hidden" name="csrf" value="<%= csrf %>">
+          <button class="btn danger sm" type="submit">Delete</button>
+        </form>
+        <% } %>
+      </div>
+    </div>
+    <% }); %>
+  </div>
+  <% if(pages > 1){ %>
+  <nav class="pager" aria-label="Pages">
+    <% if(page > 1){ %><a class="btn ghost sm" href="<%= pageBase %>page=<%= page - 1 %>">← Previous</a><% } else { %><span></span><% } %>
+    <span class="pager-info">Page <%= page %> of <%= pages %></span>
+    <% if(page < pages){ %><a class="btn ghost sm" href="<%= pageBase %>page=<%= page + 1 %>">Next →</a><% } else { %><span></span><% } %>
+  </nav>
+  <% } %>
+  <% } else { %>
+  <div class="empty">
+    <p class="empty-mark">¶</p>
+    <% if(q){ %>
+    <h2>No posts match “<%= q %>”</h2>
+    <p>Try another search, or <a href="/admin">see all posts</a>.</p>
+    <% } else if(statusFilter === 'trashed'){ %>
+    <h2>The trash is empty</h2>
+    <p>Nothing to sweep up.</p>
+    <% } else if(statusFilter === 'draft'){ %>
+    <h2>No drafts</h2>
+    <p>Everything is out in the world. <a href="/admin/posts/new">Start something new</a>.</p>
+    <% } else { %>
+    <h2>No posts yet</h2>
+    <p>The desk is clean and waiting. <a href="/admin/posts/new">Write the first one</a>.</p>
+    <% } %>
+  </div>
+  <% } %>
+</div>
+<%- include('partials/foot') %>

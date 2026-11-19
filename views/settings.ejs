@@ -1,0 +1,41 @@
+<% pageTitle = 'Settings'; bodyClass = 'admin'; useEditor = true; %>
+<%- include('partials/head') %>
+<div class="container wide">
+  <div class="page-head">
+    <div>
+      <p class="kicker">The desk</p>
+      <h1 class="page-title">Settings<span class="tick">.</span></h1>
+    </div>
+    <a class="btn ghost" href="/about" target="_blank" rel="noopener">View author page ↗</a>
+  </div>
+  <% if(locals.formError){ %><p class="form-error" role="alert"><%= formError %></p><% } %>
+  <form id="settingsForm" method="post" action="/admin/settings" class="edit-grid">
+    <input type="hidden" name="csrf" value="<%= csrf %>">
+    <div class="edit-main">
+      <div class="field-row">
+        <div class="field"><label for="f-name">Author name</label><input id="f-name" type="text" name="authorName" value="<%= settings.authorName %>" maxlength="120" required></div>
+        <div class="field"><label for="f-loc">Location</label><input id="f-loc" type="text" name="location" value="<%= settings.location %>" maxlength="120" placeholder="Portsmouth, England"></div>
+      </div>
+      <div class="field"><label for="f-tag">Tagline</label><input id="f-tag" type="text" name="tagline" value="<%= settings.tagline %>" maxlength="200" placeholder="One line under the masthead."></div>
+      <div class="field-row">
+        <div class="field"><label for="f-email">Contact email</label><input id="f-email" type="email" name="email" value="<%= settings.email %>" maxlength="254"></div>
+        <div class="field"><label for="f-web">Website</label><input id="f-web" type="url" name="website" value="<%= settings.website %>" maxlength="300" placeholder="https://…"></div>
+      </div>
+      <%- include('partials/editor', { name: 'bio', label: 'Bio (Markdown)', value: settings.bio, editorKey: 'settings-bio', placeholder: 'The author-page biography. Markdown welcome.' }) %>
+      <div class="form-actions"><button class="btn primary" type="submit">Save settings</button></div>
+    </div>
+    <aside class="edit-side">
+      <div class="side-card">
+        <h3>Portrait</h3>
+        <img class="side-portrait" src="/covers/portrait.svg" alt="Current portrait">
+        <p class="side-hint">Replace <code>public/covers/portrait.svg</code> with your own image (keep the filename) and it appears everywhere.</p>
+      </div>
+      <div class="side-card">
+        <h3>Site name</h3>
+        <p class="side-meta"><%= siteName %></p>
+        <p class="side-hint">Set in <code>server.js</code> → <code>app.locals.siteName</code>.</p>
+      </div>
+    </aside>
+  </form>
+</div>
+<%- include('partials/foot') %>

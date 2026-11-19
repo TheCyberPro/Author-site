@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 900" role="img" aria-label="Book cover: The Cartographer's Daughter by Mara Voss">
+  <defs>
+    <linearGradient id="cd-bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2a49e8"/>
+      <stop offset="1" stop-color="#0d1a66"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="900" fill="url(#cd-bg)"/>
+  <g fill="none" stroke="#cdd6ff" stroke-width="1.4" opacity="0.18">
+    <path d="M60,700 C140,616 262,596 336,656 C404,712 306,782 204,772 C122,764 34,764 60,700 Z"/>
+    <path d="M34,706 C120,590 280,566 372,640 C452,706 330,812 196,800 C96,790 4,790 34,706 Z"/>
+    <path d="M8,712 C100,562 296,534 408,624 C500,700 352,842 188,828 C68,818 -22,816 8,712 Z"/>
+    <path d="M420,120 C470,150 520,140 560,110"/>
+    <path d="M400,160 C460,200 530,190 590,150"/>
+    <path d="M380,205 C450,255 540,245 600,200"/>
+  </g>
+  <path d="M120,690 C180,640 260,632 306,668 C348,702 288,742 216,736 C160,731 100,730 120,690 Z" fill="#0a124d" opacity="0.65"/>
+  <path d="M84,824 C210,762 330,700 436,562" fill="none" stroke="#f4f4f0" stroke-width="2" stroke-dasharray="3 9" opacity="0.55"/>
+  <g stroke="#ffb84d" stroke-width="3" stroke-linecap="round">
+    <path d="M428,554 L444,570"/><path d="M444,554 L428,570"/>
+  </g>
+  <g fill="none" stroke="#cdd6ff" opacity="0.55">
+    <circle cx="484" cy="330" r="46" stroke-width="1.6"/>
+    <circle cx="484" cy="330" r="3" fill="#cdd6ff" stroke="none"/>
+    <path d="M484,284 L484,376 M438,330 L530,330" stroke-width="1.2"/>
+    <path d="M484,296 L492,318 L484,314 L476,318 Z" fill="#ffb84d" stroke="none"/>
+  </g>
+  <text x="484" y="270" text-anchor="middle" font-family="Trebuchet MS, Verdana, sans-serif" font-size="16" letter-spacing="4" fill="#cdd6ff" opacity="0.8">N</text>
+  <text x="60" y="150" font-family="Trebuchet MS, Verdana, sans-serif" font-size="26" letter-spacing="10" fill="#aab8ff">THE</text>
+  <text x="58" y="212" font-family="Trebuchet MS, Verdana, sans-serif" font-weight="bold" font-size="50" fill="#f4f4f0">CARTOGRAPHER&#8217;S</text>
+  <text x="58" y="272" font-family="Trebuchet MS, Verdana, sans-serif" font-weight="bold" font-size="50" fill="#f4f4f0">DAUGHTER</text>
+  <rect x="60" y="304" width="120" height="4" fill="#ffb84d"/>
+  <text x="60" y="348" font-family="Georgia, serif" font-style="italic" font-size="22" fill="#aab8ff">a novel</text>
+  <text x="60" y="830" font-family="Trebuchet MS, Verdana, sans-serif" font-size="28" letter-spacing="8" fill="#f4f4f0">MARA VOSS</text>
+  <text x="60" y="862" font-family="Trebuchet MS, Verdana, sans-serif" font-size="12" letter-spacing="4" fill="#aab8ff" opacity="0.85">MERIDIAN PRESS</text>
+  <rect width="24" height="900" fill="#0a124d" opacity="0.85"/>
+  <rect x="26" width="2" height="900" fill="#ffffff" opacity="0.14"/>
+</svg>

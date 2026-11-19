@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 720" role="img" aria-label="Illustrated portrait of Mara Voss at her writing desk">
+  <rect width="600" height="720" fill="#f4f4f0"/>
+  <g fill="none" stroke="#2440d6" stroke-width="1.4" opacity="0.12">
+    <path d="M-20,120 C80,60 200,70 280,120 C360,170 240,220 120,210 C40,204 -40,190 -20,120 Z"/>
+    <path d="M-40,130 C70,40 220,50 320,116 C420,182 260,250 110,238 C10,230 -70,214 -40,130 Z"/>
+    <path d="M430,60 C500,90 560,80 620,40"/>
+    <path d="M410,100 C490,140 570,130 640,86"/>
+  </g>
+  <text x="524" y="112" font-family="Georgia, serif" font-size="64" fill="#2440d6" opacity="0.16">&#182;</text>
+  <rect x="0" y="580" width="600" height="12" fill="#191b21"/>
+  <rect x="0" y="592" width="600" height="128" fill="#e2e2da"/>
+  <g>
+    <rect x="470" y="520" width="52" height="50" rx="8" fill="#2440d6"/>
+    <path d="M522,532 q24,11 0,28" fill="none" stroke="#2440d6" stroke-width="8"/>
+    <path d="M486,506 q7,-13 0,-26" fill="none" stroke="#7a8090" stroke-width="3" stroke-linecap="round" opacity="0.6"/>
+    <path d="M504,506 q-7,-13 0,-26" fill="none" stroke="#7a8090" stroke-width="3" stroke-linecap="round" opacity="0.6"/>
+  </g>
+  <rect x="278" y="348" width="44" height="60" rx="12" fill="#e8c39e"/>
+  <circle cx="300" cy="270" r="86" fill="#e8c39e"/>
+  <path d="M214,270 C210,180 258,148 300,148 C342,148 390,180 386,270 C388,322 370,342 360,330 C366,268 350,228 300,226 C250,228 234,268 240,330 C230,342 212,322 214,270 Z" fill="#191b21"/>
+  <g fill="none" stroke="#191b21" stroke-width="5">
+    <circle cx="268" cy="276" r="24"/>
+    <circle cx="332" cy="276" r="24"/>
+    <path d="M292,276 L308,276"/>
+    <path d="M244,272 L218,262"/>
+    <path d="M356,272 L382,262"/>
+  </g>
+  <path d="M180,582 C185,470 230,420 300,420 C370,420 415,470 420,582 Z" fill="#2440d6"/>
+  <rect x="270" y="390" width="60" height="42" rx="12" fill="#1a2fa8"/>
+  <text x="300" y="500" text-anchor="middle" font-family="Georgia, serif" font-size="26" fill="#f4f4f0" opacity="0.9">&#182;</text>
+  <g transform="rotate(-3 260 545)">
+    <rect x="158" y="506" width="212" height="70" rx="6" fill="#fbfbf8" stroke="#d9d9d0" stroke-width="2"/>
+    <g stroke="#c9c9c0" stroke-width="2">
+      <line x1="176" y1="526" x2="352" y2="526"/>
+      <line x1="176" y1="541" x2="352" y2="541"/>
+      <line x1="176" y1="556" x2="330" y2="556"/>
+    </g>
+    <path d="M180,562 q30,-9 62,0" fill="none" stroke="#2440d6" stroke-width="2.4"/>
+  </g>
+  <path d="M336,468 C366,498 356,522 322,542 L288,550 C302,522 314,498 322,476 Z" fill="#1a2fa8"/>
+  <circle cx="297" cy="549" r="14" fill="#e8c39e"/>
+  <line x1="299" y1="548" x2="331" y2="506" stroke="#191b21" stroke-width="6" stroke-linecap="round"/>
+  <path d="M331,506 L339,496 L336,509 Z" fill="#2440d6"/>
+</svg>

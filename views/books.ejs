@@ -1,0 +1,59 @@
+<% pageTitle = 'Books'; bodyClass = 'admin'; %>
+<%- include('partials/head') %>
+<div class="container wide">
+  <div class="page-head">
+    <div>
+      <p class="kicker">The desk</p>
+      <h1 class="page-title">Books<span class="tick">.</span></h1>
+    </div>
+    <a class="btn primary" href="/admin/books/new">+ New book</a>
+  </div>
+  <p class="page-note">Drag the <span class="drag-demo">⠿</span> handle to reorder — the public Books section follows this order. Cover files live in <code>public/covers/</code>.</p>
+  <% if(books.length){ %>
+  <ul class="book-list" id="bookList">
+    <% books.forEach((b, i) => { %>
+    <li class="book-row" data-id="<%= b.id %>">
+      <span class="drag-handle" title="Drag to reorder" aria-hidden="true">⠿</span>
+      <div class="br-move">
+        <form method="post" action="/admin/books/<%= b.id %>/move">
+          <input type="hidden" name="csrf" value="<%= csrf %>">
+          <input type="hidden" name="dir" value="up">
+          <button class="mini-btn" type="submit" <%= i === 0 ? 'disabled' : '' %> aria-label="Move up">↑</button>
+        </form>
+        <form method="post" action="/admin/books/<%= b.id %>/move">
+          <input type="hidden" name="csrf" value="<%= csrf %>">
+          <input type="hidden" name="dir" value="down">
+          <button class="mini-btn" type="submit" <%= i === books.length - 1 ? 'disabled' : '' %> aria-label="Move down">↓</button>
+        </form>
+      </div>
+      <% if(b.cover){ %>
+      <img class="br-cover" data-cover-fallback data-fb-class="br-cover cover-fallback" data-title="<%= b.title %>" src="<%= b.cover %>" alt="">
+      <% } else { %>
+      <div class="br-cover cover-fallback"><span><%= b.title %></span></div>
+      <% } %>
+      <div class="br-info">
+        <a class="br-title" href="/admin/books/<%= b.id %>/edit"><%= b.title %></a>
+        <span class="br-meta"><%= b.year || '—' %><% if(b.subtitle){ %> · <%= b.subtitle %><% } %></span>
+        <% if(b.blurb){ %><span class="br-blurb"><%= b.blurb %></span><% } %>
+      </div>
+      <div class="br-actions">
+        <% if(b.buy_url){ %><a class="btn ghost sm" href="<%= b.buy_url %>" target="_blank" rel="noopener noreferrer">Store ↗</a><% } %>
+        <a class="btn ghost sm" href="/admin/books/<%= b.id %>/edit">Edit</a>
+        <form method="post" action="/admin/books/<%= b.id %>/delete" data-confirm="Delete “<%= b.title %>” from the shelf? This cannot be undone." data-confirm-label="Delete book">
+          <input type="hidden" name="csrf" value="<%= csrf %>">
+          <button class="btn danger sm" type="submit">Delete</button>
+        </form>
+      </div>
+    </li>
+    <% }); %>
+  </ul>
+  <form id="orderForm" method="post" action="/admin/books/reorder" data-csrf="<%= csrf %>"></form>
+  <% } else { %>
+  <div class="empty">
+    <p class="empty-mark">¶</p>
+    <h2>The shelf is empty</h2>
+    <p><a href="/admin/books/new">Add the first book</a> — title, cover, and a buy link is all it takes.</p>
+  </div>
+  <% } %>
+</div>
+<%- include('partials/foot') %>

@@ -1,0 +1,80 @@
+</main>
+<% const adminArea = currentPath.startsWith('/admin') && currentPath !== '/admin/login'; const authArea = currentPath === '/admin/login'; %>
+<% if(!adminArea && !authArea){ %>
+<footer class="site-footer">
+  <div class="container">
+    <section class="letter" id="letter">
+      <div class="letter-copy">
+        <p class="kicker light">The monthly letter</p>
+        <h2 class="letter-title">The Margin<span class="tick">.</span></h2>
+        <p class="letter-text">One letter a month: a new essay, what I'm writing, what I'm reading, and occasionally a map. No noise, ever.</p>
+      </div>
+      <div class="letter-signup">
+        <form class="letter-form" data-newsletter method="post" action="/subscribe">
+          <input type="hidden" name="csrf" value="<%= csrf %>">
+          <input type="hidden" name="back" value="<%= currentUrl %>">
+          <input class="hp" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <label class="sr-only" for="letterEmail">Email address</label>
+          <input id="letterEmail" type="email" name="email" required maxlength="254" placeholder="you@example.com" autocomplete="email">
+          <button class="btn primary" type="submit">Subscribe</button>
+        </form>
+        <p class="letter-note" data-letter-note>Free. Unsubscribe anytime. Your address is never shared.</p>
+      </div>
+    </section>
+    <div class="footer-base">
+      <p>© <%= year %> <%= settings.authorName %> · <%= siteName %></p>
+      <p class="colophon">Set in Bricolage Grotesque &amp; Literata · Built on Express &amp; SQLite</p>
+      <nav class="footer-links" aria-label="Footer">
+        <a href="/feed.xml">RSS</a>
+        <a href="/about">About</a>
+        <a href="<%= isAdmin ? '/admin' : '/admin/login' %>"><%= isAdmin ? 'The desk' : 'Sign in' %></a>
+        <a href="#main">Top ↑</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+<% } else if(!authArea){ %>
+<footer class="admin-footer">
+  <div class="container">
+    <p><%= siteName %> · the desk</p>
+    <a href="/">← Back to the site</a>
+  </div>
+</footer>
+<% } %>
+<div class="toasts" id="toasts" aria-live="polite">
+  <% if(flash){ %>
+  <div class="toast toast-<%= flash.type || 'info' %>" data-toast data-ttl="<%= flash.action ? 9000 : 5200 %>">
+    <span class="toast-dot"></span>
+    <div class="toast-msg"><%= flash.text %></div>
+    <% if(flash.action){ %>
+      <% if(flash.action.method === 'get'){ %>
+        <a class="toast-action" href="<%= flash.action.url %>"><%= flash.action.label %></a>
+      <% } else { %>
+        <form method="post" action="<%= flash.action.url %>">
+          <input type="hidden" name="csrf" value="<%= csrf %>">
+          <button class="toast-action" type="submit"><%= flash.action.label %></button>
+        </form>
+      <% } %>
+    <% } %>
+    <button class="toast-close" data-toast-close aria-label="Dismiss">×</button>
+  </div>
+  <% } %>
+</div>
+<dialog class="modal" id="confirmDialog" aria-labelledby="confirmTitle">
+  <form method="dialog" class="modal-card">
+    <h3 id="confirmTitle">Are you sure?</h3>
+    <p id="confirmText"></p>
+    <div class="modal-actions">
+      <button value="cancel" class="btn ghost" type="submit">Cancel</button>
+      <button value="confirm" id="confirmYes" class="btn danger" type="submit">Delete</button>
+    </div>
+  </form>
+</dialog>
+<script src="/site.js"></script>
+<% if(useEditor){ %>
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.6/dist/purify.min.js"></script>
+<% } %>
+<% if(adminArea){ %><script src="/admin.js"></script><% } %>
+</body>
+</html>
