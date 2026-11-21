@@ -1,0 +1,159 @@
+{
+ "defaults": {
+  "author_name": "Jeffery Zweverink",
+  "tagline": "Novelist & essayist. Maps, memory, and the sea.",
+  "location": "Portsmouth, England",
+  "email": "hello@thelongdraft.example",
+  "website": "https://thelongdraft.example",
+  "bio": "Jeffery Zweverink writes novels about coastlines, inheritance, and the instruments people build to measure what they are afraid of losing. She is the author of **The Cartographer's Daughter** (2019), **Salt & Signal** (2022), and **Winterlight** (2025).\n\nBefore writing fiction she spent nine years as a hydrographic surveyor, charting the Solent and the approaches to Portsmouth — work that taught her that every map is an argument about what matters. She still keeps a working chart table, and most of her novels begin as a mistake on one.\n\nShe lives in Portsmouth, The Netherland, within earshot of the foghorn. This journal is where she thinks out loud between books: notes on craft, research trips, rereading, and the occasional confession about notebooks. Once a month she sends [The Margin](/#letter), a short letter about what she is writing and reading.\n\n*For readings, rights, and blurb requests: [hello@thelongdraft.example](mailto:hello@thelongdraft.example).*"
+ },
+ "posts": [
+  [
+   "The notebook is a liar",
+   "the-notebook-is-a-liar",
+   "Every notebook promises order. Mine deliver an honest record of panic — and that, it turns out, is the useful part.",
+   "Every notebook I buy arrives with a promise printed into its first page: *index, page numbers, archive-quality paper*. Order, it whispers. You will be a person with a system.\n\nThree weeks later mine contain a shopping list, four bars of a song I can't place, the sentence \"the harbour smells of cold pennies\", and a phone number with no name. The notebook is a liar. But it is an honest liar, and I have stopped asking it to be anything else.\n\n## The clean page problem\n\nThe danger of a beautiful notebook is that it makes you want to deserve it. You draft a sentence, decide it isn't good enough for the paper, and write nothing. The cheap spiral pad has no such aura. The cheap spiral pad is where my novels actually live.\n\n> A notebook is not a filing cabinet. It is a net. Most of what swims past is not for keeping — but you cannot know which part matters until later.\n\nWhat a notebook is genuinely for, in my experience:\n\n- catching the sentence before it evaporates\n- recording what a place *felt* like, not what it looked like\n- keeping a private log of panic, which rereading later turns into a map of the book\n\nThe index pages stay empty. The archive-quality paper holds a drawing of a crab. Somewhere in the middle, three pages of nonsense quietly become chapter nine. I no longer apologise to the notebook.",
+   "published",
+   "2026-11-02T09:00:00.000Z",
+   "2026-11-02T09:00:00.000Z",
+   "2026-11-02"
+  ],
+  [
+   "Writing the sea without getting wet",
+   "writing-the-sea-without-getting-wet",
+   "You can write the sea from a desk. You cannot write it from memory alone — memory edits out the boredom.",
+   "You can write the sea from a desk. You cannot write it from memory alone — memory edits out the boredom, and the sea is mostly boredom with occasional terror, which is exactly the rhythm a reader needs to feel.\n\nSo before *Salt & Signal* I spent a year doing the unglamorous kind of research: tide tables, pilot books, the RNLI's [incident statistics](https://rnli.org/), and long conversations with people who work where the land gives up.\n\n## What the water teaches\n\nA lifeboat volunteer told me something I have used in every book since:\n\n> \"People think the dangerous days are the storm days. The dangerous days are the flat calm ones, when everybody relaxes.\"\n\nThat is also a description of the middle of a novel. The storm chapters write themselves; it is the flat calm of chapter fourteen that drowns people.\n\nThe other thing research gives you is permission. I could not invent a fog signal's character — three seconds on, ten seconds off, a voice like a door in a cellar — but once I had stood in it, I was allowed to exaggerate. Facts first; then you have earned your weather.\n\nI still get letters from readers who assume I grew up on a lighthouse rock. I grew up forty miles inland. The sea I write is built from documents and visits, the way a chart is built from soundings: thousands of small measurements, and a confident line drawn between them.",
+   "published",
+   "2026-10-14T09:00:00.000Z",
+   "2026-10-14T09:00:00.000Z",
+   "2026-10-14"
+  ],
+  [
+   "A plain-text decade",
+   "a-plain-text-decade",
+   "Ten years ago I lost a novel to a proprietary file format. Everything I write now begins life as plain text.",
+   "Ten years ago I lost a novel to a proprietary file format. The program updated, the file corrupted, and six months of work became eleven megabytes of confident garbage. Since then everything I write begins life as plain text.\n\nNo app subscriptions. No sync conflicts. No company deciding my manuscript is a legacy format. Just files, named like a person who has learned something: `winterlight-draft-07.txt`.\n\n## The whole system\n\nMy morning routine fits in a code block, which is the point:\n\n```\n06:40  make tea, do not check anything\n06:50  open yesterday's file, read last 300 words\n07:00  write 500 words, no editing, no research\n08:00  stop mid-sentence (Hemingway's trick, it works)\n```\n\nEssays like this one get [Markdown](https://daringfireball.net/projects/markdown/) for structure — headings, links, the occasional list — because Markdown is plain text wearing a tidy shirt. It will open in anything, forever.\n\nThe rules, after a decade:\n\n1. One file per piece, numbered versions, nothing clever\n2. Back up to two places, one of them physical\n3. The tool you can leave is the tool you should choose\n\nWord processors are lovely hosts. I just prefer to own the house.",
+   "published",
+   "2026-09-21T09:00:00.000Z",
+   "2026-09-21T09:00:00.000Z",
+   "2026-09-21"
+  ],
+  [
+   "On rereading",
+   "on-rereading",
+   "First readings are tourism. Rereading is living somewhere. A defence of the kitchen shelf of books I have read four times.",
+   "There is a shelf in my kitchen of books I have read at least four times. Visitors apologise to it, as if the unread pile were the respectable one. I have stopped defending the shelf, but here is the defence anyway: first readings are tourism. Rereading is living somewhere.\n\nThe first time through a novel you are pulled by plot — you *need to know*. Every later reading is freed from that hunger, and you finally see the joinery: how the weather in chapter two is load-bearing, how a throwaway line on page forty is the whole book in disguise.\n\n> You do not reread a book to find out what happens. You reread it to find out how it knew.\n\nWhen I am stuck, I do not read something new. I retype a page of a book I love — slowly, by hand, like copying a master's drawing. Somewhere around the third sentence the rhythm gets into my wrists, and I can feel the decisions the writer made, including the ones they declined to make.\n\nThen I delete the copied page, because it is not mine, and write my own bad sentences until one of them is less bad. The shelf has never once failed me. The unread pile, meanwhile, grows like a hedge. Both things are fine.",
+   "published",
+   "2026-08-30T09:00:00.000Z",
+   "2026-08-30T09:00:00.000Z",
+   "2026-08-30"
+  ],
+  [
+   "The cartographer's mistake",
+   "the-cartographers-mistake",
+   "The first novel began with a mistake on a chart: eleven metres of water where the harbour master knew there were three.",
+   "The first novel began with a mistake on a chart. I was still surveying then, and a colleague had corrected a sounding in the wrong column — eleven metres of water where the harbour master knew there were three. For a week, on paper, the harbour had a hole in it.\n\nI kept thinking about that hole. A room made of clerical error, down there in the cold, officially real. What would you keep in a place that exists only because someone was tired on a Tuesday?\n\n## The book that came out of it\n\n*The Cartographer's Daughter* is not about surveying, exactly. It is about a woman who inherits her father's atlas and finds coastlines in it that have never existed — and letters, folded into the bindings, that he never sent. Every map is an argument about what matters. Every atlas of imaginary places is an argument with yourself.\n\nPeople ask which parts are autobiographical. The honest answer: the smell of the chart room, the sound of a pencil on Mylar, the specific tiredness of a Tuesday. The rest is the hole in the harbour, furnished.\n\nI left surveying the year the book sold. My colleague — the one with the wrong column — came to the launch and had me sign a copy of the corrected chart, which hangs in my study now.\n\nEleven metres, it says, where there are three. He has written underneath: *you're welcome*.",
+   "published",
+   "2026-07-12T09:00:00.000Z",
+   "2026-07-12T09:00:00.000Z",
+   "2026-07-12"
+  ],
+  [
+   "Beginnings are decisions",
+   "beginnings-are-decisions",
+   "Beginnings are not inspiration. They are the first and largest of the ten thousand decisions a novel is made of.",
+   "Beginnings are not inspiration. Beginnings are decisions — the first and largest of the ten thousand decisions a novel is made of. You are choosing a door, and every later room depends on which one you walked through.\n\nFor *Winterlight* I tried four openings before the true one:\n\n1. **The weather report.** A page of beautiful cold. Nobody in it. Beautiful, empty, dead.\n2. **The funeral.** Starting with grief is starting with the ending of something; the reader inherits a debt they never agreed to.\n3. **The arrival.** A woman, a taxi, a key that doesn't fit. Close — but the taxi was doing the work a person should do.\n4. **The inventory.** She opens her mother's house and starts listing what is in it, and the list begins to lie. That was the door.\n\nNotice what the good one decides: point of view, tense of heart, the book's central distrust of surfaces. Four sentences in and the reader has signed a contract, even if they can't read it yet.\n\nSo when a beginning refuses to come, I no longer wait for the music. I list the doors. I make myself write two paragraphs through each one, badly, and see which room I want to furnish.\n\nThe music, when it arrives, is usually just the sound of a decision settling.",
+   "published",
+   "2026-06-05T09:00:00.000Z",
+   "2026-06-05T09:00:00.000Z",
+   "2026-06-05"
+  ],
+  [
+   "Notes toward a fourth book",
+   "notes-toward-a-fourth-book",
+   "",
+   "Working title candidates: *The Thaw*, *Other People's Winters*, *A House Full of Cold*. None right yet.\n\n- Translator returns to a town where the sun sets for the season — keep\n- The estate inventory that lies — this was Winterlight's engine; the new book needs its own\n- What if the letters are addressed to the house, not the people in it?\n- Research: ice cores, probate law, the psychology of inherited objects\n- Ask the archive at Portsmouth about winter shipping ledgers, 1911–1930\n\nRule for this one: no maps. (Last rule lasted two chapters.)",
+   "draft",
+   "2026-11-10T09:00:00.000Z",
+   "2026-11-10T09:00:00.000Z",
+   null
+  ]
+ ],
+ "books": [
+  [
+   "The Cartographer's Daughter",
+   "A novel",
+   2019,
+   "/covers/cartographers-daughter.svg",
+   "https://bookshop.org/",
+   "A mapmaker's daughter inherits an atlas of coastlines that never existed — and the letters her father never sent. A novel about the places we invent to survive the ones we lose.",
+   0
+  ],
+  [
+   "Salt & Signal",
+   "A novel · Meridian Prize, 2023",
+   2022,
+   "/covers/salt-and-signal.svg",
+   "https://uk.bookshop.org/",
+   "Two keepers on a decommissioned lighthouse rock begin receiving transmissions in a dead language. As the sea rises, the messages grow personal. \"A ghost story with a barometer in its chest.\"",
+   1
+  ],
+  [
+   "Winterlight",
+   "A novel",
+   2025,
+   "/covers/winterlight.svg",
+   "https://www.hive.co.uk/",
+   "In a town where the sun sets for the season, a translator returns to settle her mother's estate and finds the house full of other people's winters. A novel of inheritance, translation, and thaw.",
+   2
+  ]
+ ],
+ "settings": [
+  [
+   "author_name",
+   "Jeffery Zweverink"
+  ],
+  [
+   "tagline",
+   "Novelist & essayist. Maps, memory, and the sea."
+  ],
+  [
+   "location",
+   "Portsmouth, England"
+  ],
+  [
+   "email",
+   "hello@thelongdraft.example"
+  ],
+  [
+   "website",
+   "https://thelongdraft.example"
+  ],
+  [
+   "bio",
+   "Jeffery Zweverink writes novels about coastlines, inheritance, and the instruments people build to measure what they are afraid of losing. She is the author of **The Cartographer's Daughter** (2019), **Salt & Signal** (2022), and **Winterlight** (2025).\n\nBefore writing fiction she spent nine years as a hydrographic surveyor, charting the Solent and the approaches to Portsmouth — work that taught her that every map is an argument about what matters. She still keeps a working chart table, and most of her novels begin as a mistake on one.\n\nShe lives in Portsmouth, The Netherland, within earshot of the foghorn. This journal is where she thinks out loud between books: notes on craft, research trips, rereading, and the occasional confession about notebooks. Once a month she sends [The Margin](/#letter), a short letter about what she is writing and reading.\n\n*For readings, rights, and blurb requests: [hello@thelongdraft.example](mailto:hello@thelongdraft.example).*"
+  ]
+ ],
+ "subscribers": [
+  [
+   "ada@fieldnotes.example",
+   "2026-06-07T10:12:00.000Z"
+  ],
+  [
+   "j.okafor@postbox.example",
+   "2026-07-19T18:40:00.000Z"
+  ],
+  [
+   "riverside.bookclub@lists.example",
+   "2026-08-02T09:05:00.000Z"
+  ],
+  [
+   "m.tanaka@readingroom.example",
+   "2026-09-23T21:33:00.000Z"
+  ],
+  [
+   "the.librarian@stacks.example",
+   "2026-11-01T08:15:00.000Z"
+  ]
+ ]
+}

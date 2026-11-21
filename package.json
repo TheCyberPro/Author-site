@@ -10,11 +10,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@libsql/client": "^0.18.0",
     "bcryptjs": "^3.0.3",
-    "better-sqlite3": "^13.2.0",
+    "cookie-session": "^2.1.1",
     "ejs": "^7.0.2",
     "express": "^5.3.0",
-    "express-session": "^1.19.0",
     "marked": "^12.0.2",
     "sanitize-html": "^2.13.1"
   }
